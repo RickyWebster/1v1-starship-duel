@@ -7,8 +7,6 @@
 position = Vector2(200, 200)
 rotation = 1.5708
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 7
 script = ExtResource("1_jijog")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,10 +15,10 @@ position = Vector2(0, 5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_4ymh8")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(-11, 0)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 5)
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(-5, -3, 0, -6, 3, -6, 4, -5, 4, -4, 2, -3, 2, -2, 4, -1, 4, 0, 3, 1, 0, 1, -5, -2)
-
-[node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(-11, 0)

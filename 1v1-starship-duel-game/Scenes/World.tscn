@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctbe5eml0n14e"]
+[gd_scene load_steps=5 format=3 uid="uid://ctbe5eml0n14e"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_1fl25"]
 [ext_resource type="PackedScene" uid="uid://ckhv54xnded0i" path="res://Scenes/ship_1.tscn" id="1_a3d66"]
 [ext_resource type="PackedScene" uid="uid://y5yiufuevy2f" path="res://Scenes/ship_2.tscn" id="2_nlmyk"]
+[ext_resource type="PackedScene" uid="uid://pq17l0tiwia6" path="res://Scenes/gui_elements.tscn" id="4_dxsa2"]
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
 script = ExtResource("1_1fl25")
 
 [node name="Ship1" parent="." instance=ExtResource("1_a3d66")]
 position = Vector2(230, 235)
+rotation = 3.14159
 
 [node name="Ship2" parent="." instance=ExtResource("2_nlmyk")]
-position = Vector2(849, 491)
+position = Vector2(700, 237)
+rotation = 0.0
 
 [node name="Lasers" type="Node2D" parent="."]
+
+[node name="GUI_Elements" parent="." instance=ExtResource("4_dxsa2")]

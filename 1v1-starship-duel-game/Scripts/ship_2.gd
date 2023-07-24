@@ -12,21 +12,20 @@ var laser_scene = preload("res://Scenes/laser.tscn")
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("shoot2"):
+	if Input.is_action_just_pressed("p2_shoot"):
 		shoot_laser()
-
 
 func _physics_process(delta):
 	var direction = 0
-	if Input.is_action_pressed("p1_left"):
+	if Input.is_action_pressed("p2_left"):
 		direction = -1
-	if Input.is_action_pressed("p1_right"):
+	if Input.is_action_pressed("p2_right"):
 		direction = 1
 	
 	rotation += angular_speed * direction * delta
 	
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("p1_accelorate"):
+	if Input.is_action_pressed("p2_accelorate"):
 		if speed < max_speed:
 			speed += 10
 		velocity = Vector2.LEFT.rotated(rotation) * speed
