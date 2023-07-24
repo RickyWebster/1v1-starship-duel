@@ -11,9 +11,12 @@ var dirft_rotation = rotation
 var laser_scene = preload("res://Scenes/laser.tscn")
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("p2_shoot"):
 		shoot_laser()
+		
+	if passer.death == true:
+		death()
 
 func _physics_process(delta):
 	var direction = 0
@@ -24,19 +27,19 @@ func _physics_process(delta):
 	
 	rotation += angular_speed * direction * delta
 	
-	var velocity = Vector2.ZERO
+	var local_velocity = Vector2.ZERO
 	if Input.is_action_pressed("p2_accelorate"):
 		if speed < max_speed:
 			speed += 10
-		velocity = Vector2.LEFT.rotated(rotation) * speed
+		local_velocity = Vector2.LEFT.rotated(rotation) * speed
 		dirft_rotation = rotation
 		
 	else:
 		if speed > 0:
 			speed -= 3.0
-		velocity = Vector2.LEFT.rotated(dirft_rotation)* speed
+		local_velocity = Vector2.LEFT.rotated(dirft_rotation)* speed
 		
-	position += velocity * delta
+	position += local_velocity * delta
 	
 
 func shoot_laser():
@@ -44,3 +47,10 @@ func shoot_laser():
 	las.global_position = muzzle.global_position
 	las.rotation = rotation + -PI/2
 	emit_signal("laser_shot", las)
+
+
+func death():
+	passer.p2_health = 100
+	self.global_position = Vector2(950,250)
+	rotation = 0
+	speed = 0

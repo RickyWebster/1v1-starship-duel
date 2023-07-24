@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c2v2n8ahxf136" path="res://Assets/Ship1.png" id="2_ocreu"]
 
 [node name="Ship2" type="CharacterBody2D"]
-position = Vector2(200, 200)
 rotation = 1.5708
 scale = Vector2(2, 2)
 script = ExtResource("1_umlw0")
