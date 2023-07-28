@@ -5,6 +5,7 @@ extends Node2D
 @onready var player2 = $Ship2
 
 func _ready():
+#	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	player1.connect("laser_shot1", _on_player_laser_shot)
 	player2.connect("laser_shot", _on_player_laser_shot)
 

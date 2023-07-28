@@ -27,19 +27,19 @@ func _physics_process(delta):
 	
 	rotation += angular_speed * direction * delta
 	
-	var local_velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("p2_accelorate"):
 		if speed < max_speed:
 			speed += 10
-		local_velocity = Vector2.LEFT.rotated(rotation) * speed
+		velocity = Vector2.LEFT.rotated(rotation) * speed
 		dirft_rotation = rotation
 		
 	else:
 		if speed > 0:
 			speed -= 3.0
-		local_velocity = Vector2.LEFT.rotated(dirft_rotation)* speed
+		velocity = Vector2.LEFT.rotated(dirft_rotation)* speed
 		
-	position += local_velocity * delta
+	move_and_slide()
 	
 
 func shoot_laser():
@@ -51,6 +51,6 @@ func shoot_laser():
 
 func death():
 	passer.p2_health = 100
-	self.global_position = Vector2(950,250)
+	self.global_position = Vector2(2004,548)
 	rotation = 0
 	speed = 0

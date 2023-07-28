@@ -1,21 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctbe5eml0n14e"]
+[gd_scene load_steps=6 format=3 uid="uid://ctbe5eml0n14e"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_1fl25"]
 [ext_resource type="PackedScene" uid="uid://ckhv54xnded0i" path="res://Scenes/ship_1.tscn" id="1_a3d66"]
 [ext_resource type="PackedScene" uid="uid://y5yiufuevy2f" path="res://Scenes/ship_2.tscn" id="2_nlmyk"]
 [ext_resource type="PackedScene" uid="uid://pq17l0tiwia6" path="res://Scenes/gui_elements.tscn" id="4_dxsa2"]
+[ext_resource type="PackedScene" uid="uid://dt1yqf5jpif46" path="res://Scenes/wall.tscn" id="5_s34tu"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_1fl25")
 
 [node name="Ship1" parent="." instance=ExtResource("1_a3d66")]
-position = Vector2(200, 250)
+position = Vector2(300, 448)
 rotation = 3.14159
 
 [node name="Ship2" parent="." instance=ExtResource("2_nlmyk")]
-position = Vector2(950, 250)
+position = Vector2(2004, 548)
 rotation = 0.0
 
 [node name="Lasers" type="Node2D" parent="."]
 
 [node name="GUI_Elements" parent="." instance=ExtResource("4_dxsa2")]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("5_s34tu")]
+position = Vector2(0, -15)
+scale = Vector2(74.5, 5)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("5_s34tu")]
+position = Vector2(0, 1296)
+scale = Vector2(74.5, 5)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("5_s34tu")]
+position = Vector2(2304, 0)
+scale = Vector2(1, 435)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("5_s34tu")]
+position = Vector2(-31, 0)
+scale = Vector2(1, 435)
