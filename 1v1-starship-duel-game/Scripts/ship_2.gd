@@ -9,11 +9,16 @@ var dirft_rotation = rotation
 
 @onready var muzzle = $Muzzle
 var laser_scene = preload("res://Scenes/laser.tscn")
-
+var shoot_cd = false
+var fire_rate = 0.2
 
 func _process(_delta):
-	if Input.is_action_just_pressed("p2_shoot"):
-		shoot_laser()
+	if Input.is_action_pressed("p2_shoot"):
+		if !shoot_cd:
+			shoot_cd = true
+			shoot_laser()
+			await get_tree().create_timer(fire_rate).timeout
+			shoot_cd = false
 		
 	if passer.death == true:
 		death()
