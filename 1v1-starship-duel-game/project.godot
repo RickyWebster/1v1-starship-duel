@@ -21,9 +21,7 @@ passer="*res://Scripts/Passer.gd"
 
 [display]
 
-window/size/viewport_width=2304
-window/size/viewport_height=1296
-window/size/resizable=false
+window/stretch/mode="canvas_items"
 
 [input]
 

@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var what_ship = load("res://Scripts/ship_1.gd").new()
-@export var speed := 800
+@export var speed := 600
 var movement_vector := Vector2(0, -1)
 
 

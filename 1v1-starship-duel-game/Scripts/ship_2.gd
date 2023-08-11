@@ -4,13 +4,13 @@ signal laser_shot(laser)
 
 var angular_speed = PI
 var speed = 0.0
-var max_speed = 400.0
+var max_speed = 200.0
 var dirft_rotation = rotation
 
 @onready var muzzle = $Muzzle
 var laser_scene = preload("res://Scenes/laser.tscn")
 var shoot_cd = false
-var fire_rate = 0.2
+var fire_rate = 0.15
 
 func _process(_delta):
 	if Input.is_action_pressed("p2_shoot"):
@@ -56,6 +56,6 @@ func shoot_laser():
 
 func death():
 	passer.p2_health = 100
-	self.global_position = Vector2(2004,548)
-	rotation = 0
+	self.global_position = Vector2(960,324)
+	rotation = deg_to_rad(15)
 	speed = 0
