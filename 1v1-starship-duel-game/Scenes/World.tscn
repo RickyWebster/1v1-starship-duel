@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctbe5eml0n14e"]
+[gd_scene load_steps=12 format=3 uid="uid://ctbe5eml0n14e"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_1fl25"]
 [ext_resource type="PackedScene" uid="uid://ckhv54xnded0i" path="res://Scenes/ship_1.tscn" id="1_a3d66"]
 [ext_resource type="PackedScene" uid="uid://y5yiufuevy2f" path="res://Scenes/ship_2.tscn" id="2_nlmyk"]
 [ext_resource type="PackedScene" uid="uid://pq17l0tiwia6" path="res://Scenes/gui_elements.tscn" id="4_dxsa2"]
+[ext_resource type="Script" path="res://Scripts/SpaceBackground.gd" id="5_k03bg"]
+[ext_resource type="Texture2D" uid="uid://c8hqh36ajp7od" path="res://Assets/SpaceBackgrounds/Space Background layer(1).png" id="6_ehpr5"]
+[ext_resource type="Texture2D" uid="uid://bfpil6dieilno" path="res://Assets/SpaceBackgrounds/Space Background(4) Dark.png" id="7_iegay"]
+[ext_resource type="Texture2D" uid="uid://c53nfsp7uagee" path="res://Assets/SpaceBackgrounds/Space Background (3),(2nd).png" id="8_7int8"]
+[ext_resource type="Texture2D" uid="uid://bnv74as3ugwa1" path="res://Assets/SpaceBackgrounds/Space Background (2),(2nd).png" id="9_6ugu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgict"]
 size = Vector2(20, 648)
@@ -15,11 +20,13 @@ size = Vector2(1152, 20)
 script = ExtResource("1_1fl25")
 
 [node name="Ship1" parent="." instance=ExtResource("1_a3d66")]
+texture_filter = 1
 position = Vector2(192, 324)
 rotation = 2.87979
 scale = Vector2(1, 1)
 
 [node name="Ship2" parent="." instance=ExtResource("2_nlmyk")]
+texture_filter = 1
 position = Vector2(960, 324)
 rotation = 0.261799
 scale = Vector2(1, 1)
@@ -45,3 +52,43 @@ shape = SubResource("RectangleShape2D_ve0i5")
 [node name="HorzWall2" type="CollisionShape2D" parent="Walls"]
 position = Vector2(576, 658)
 shape = SubResource("RectangleShape2D_ve0i5")
+
+[node name="SpaceBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("5_k03bg")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpaceBackground"]
+texture_filter = 1
+position = Vector2(573.5, 324)
+scale = Vector2(0.9, 1.8)
+texture = ExtResource("6_ehpr5")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="SpaceBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpaceBackground/ParallaxLayer5"]
+texture_filter = 1
+position = Vector2(1152, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("7_iegay")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="SpaceBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpaceBackground/ParallaxLayer3"]
+texture_filter = 1
+position = Vector2(1152, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("8_7int8")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="SpaceBackground"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(2304, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpaceBackground/ParallaxLayer4"]
+modulate = Color(1, 1, 1, 0.780392)
+texture_filter = 1
+position = Vector2(1152, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("9_6ugu5")
