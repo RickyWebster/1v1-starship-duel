@@ -4,10 +4,22 @@ extends Node2D
 @onready var player1 = $Ship1
 @onready var player2 = $Ship2
 
-func _ready():
-#	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	player1.connect("laser_shot1", _on_player_laser_shot)
-	player2.connect("laser_shot", _on_player_laser_shot)
+var laserTextureRed: Texture = load("res://Assets/bullets/Laser_red.png")
+var laserTextureBlue: Texture = load("res://Assets/bullets/Laser_red.png")
 
-func _on_player_laser_shot(laser):
+
+func _ready():
+	player1.connect("laser_shot1", _on_player_laser_shot1)
+	player2.connect("laser_shot2", _on_player_laser_shot2)
+
+func _on_player_laser_shot1(laser):
+	if passer.colour1 == 1:
+		var laserSprite = laser.get_node("Sprite2D")
+		laserSprite.texture = laserTextureRed
+	lasers.add_child(laser)
+
+func _on_player_laser_shot2(laser):
+	if passer.colour2 == 1:
+		var laserSprite = laser.get_node("Sprite2D")
+		laserSprite.texture = laserTextureRed
 	lasers.add_child(laser)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7uun7wc1wfxc"
-path="res://.godot/imported/Space Background layer(4).png-4c57390078912781bb1239ab9dd345ad.ctex"
+uid="uid://ccmhvpkk2x701"
+path="res://.godot/imported/Laser_red.png-2fffa82cf1deaf1eeb4ccc9cedda5788.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpaceBackgrounds/Space Background layer(4).png"
-dest_files=["res://.godot/imported/Space Background layer(4).png-4c57390078912781bb1239ab9dd345ad.ctex"]
+source_file="res://Assets/bullets/Laser_red.png"
+dest_files=["res://.godot/imported/Laser_red.png-2fffa82cf1deaf1eeb4ccc9cedda5788.ctex"]
 
 [params]
 

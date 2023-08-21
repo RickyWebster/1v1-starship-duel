@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj58g7rs4hvxj"
-path="res://.godot/imported/glowing_circle.png-4d9e783f3065e7277425288fdb8bdc47.ctex"
+uid="uid://bduif4vgs6ihv"
+path="res://.godot/imported/Space Background layer(2).png-cd754cb162cde25f50a8c1e78cf27449.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/glowing_circle.png"
-dest_files=["res://.godot/imported/glowing_circle.png-4d9e783f3065e7277425288fdb8bdc47.ctex"]
+source_file="res://Assets/SpaceBackground/Space Background layer(2).png"
+dest_files=["res://.godot/imported/Space Background layer(2).png-cd754cb162cde25f50a8c1e78cf27449.ctex"]
 
 [params]
 

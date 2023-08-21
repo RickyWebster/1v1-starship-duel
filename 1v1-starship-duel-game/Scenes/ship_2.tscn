@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://y5yiufuevy2f"]
 
 [ext_resource type="Script" path="res://Scripts/ship_2.gd" id="1_umlw0"]
-[ext_resource type="Texture2D" uid="uid://c2v2n8ahxf136" path="res://Assets/Ship1.png" id="2_ocreu"]
+[ext_resource type="Texture2D" uid="uid://c2v2n8ahxf136" path="res://Assets/Ships/Ship1.png" id="2_ocreu"]
 
 [node name="Ship2" type="CharacterBody2D"]
 rotation = 1.5708
@@ -20,4 +20,4 @@ scale = Vector2(2, 2)
 polygon = PackedVector2Array(-5, -3, 0, -6, 3, -6, 4, -5, 4, -4, 2, -3, 2, -2, 4, -1, 4, 0, 3, 1, 0, 1, -5, -2)
 
 [node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(-10.5, 0)
+position = Vector2(-11, 0)

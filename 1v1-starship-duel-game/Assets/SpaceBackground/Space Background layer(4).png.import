@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8f2eur3yw52j"
-path="res://.godot/imported/Ship2.png-500c6b7086381b9fe96e39bb2be01851.ctex"
+uid="uid://c7uun7wc1wfxc"
+path="res://.godot/imported/Space Background layer(4).png-71a0a08a756c0ea4462584fcbf8a3286.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ship2.png"
-dest_files=["res://.godot/imported/Ship2.png-500c6b7086381b9fe96e39bb2be01851.ctex"]
+source_file="res://Assets/SpaceBackground/Space Background layer(4).png"
+dest_files=["res://.godot/imported/Space Background layer(4).png-71a0a08a756c0ea4462584fcbf8a3286.ctex"]
 
 [params]
 

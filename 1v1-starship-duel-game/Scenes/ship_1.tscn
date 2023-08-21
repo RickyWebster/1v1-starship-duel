@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckhv54xnded0i"]
 
 [ext_resource type="Script" path="res://Scripts/ship_1.gd" id="1_jijog"]
-[ext_resource type="Texture2D" uid="uid://8f2eur3yw52j" path="res://Assets/Ship2.png" id="2_4ymh8"]
+[ext_resource type="Texture2D" uid="uid://8f2eur3yw52j" path="res://Assets/Ships/Ship2.png" id="2_4ymh8"]
 
 [node name="Ship1" type="CharacterBody2D"]
 rotation = 1.5708

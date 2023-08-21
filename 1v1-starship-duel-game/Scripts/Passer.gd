@@ -3,6 +3,10 @@ extends Node2D
 var p1_health = 100
 var p2_health = 100
 var death = false
+var what_power1 = 0
+var what_power2 = 0
+var colour1 = 0
+var colour2 = 0
 
 func _process(_delta):
 	if p1_health <= 0:
