@@ -5,7 +5,6 @@ extends Node2D
 @onready var Powerup2 = $Powerup2
 
 var length = 0.06 # Length of cooldown * 10^-2
-var rng = RandomNumberGenerator.new()
 
 
 func _process(_delta):
@@ -23,7 +22,7 @@ func _process(_delta):
 		Powerup2.set_modulate(Color8(194,38,0))
 	else:
 		Powerup2.set_modulate(Color8(194,149,0))
-		
+	
 
 func _on_timer_timeout():
 	if Powerup1.value <= 99:
@@ -44,6 +43,6 @@ func _on_timer_timeout():
 
 
 func power(no):
-	var what_power = rng.randi_range(1, 3)
+	var what_power = randi_range(1, 3)
 	passer["what_power" + str(no)] = what_power
 	print(what_power)

@@ -16,6 +16,7 @@ func _on_player_laser_shot1(laser):
 	if passer.colour1 == 1:
 		var laserSprite = laser.get_node("Sprite2D")
 		laserSprite.texture = laserTextureRed
+		var laserParticle = laser.get_node("GPUParticles2D")
 	lasers.add_child(laser)
 
 func _on_player_laser_shot2(laser):

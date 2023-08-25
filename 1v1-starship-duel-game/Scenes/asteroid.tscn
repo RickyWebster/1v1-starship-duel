@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://warplkt837cy"]
+
+[ext_resource type="Script" path="res://Scripts/asteroid.gd" id="1_c0m5n"]
+[ext_resource type="Texture2D" uid="uid://cmq0s3xw6fep3" path="res://Assets/Asteroids/NO1L.png" id="2_eq0r7"]
+
+[node name="Asteroid" type="Area2D"]
+script = ExtResource("1_c0m5n")
+WhatAsteroid = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_eq0r7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-17, 39)
+polygon = PackedVector2Array(-42, -29, -27, 13, -12, 21, -1, 12, 21, 21, 57, 5, 73, -19, 73, -67, 61, -87, 27, -99, 13, -83, -19, -79)
+one_way_collision_margin = 0.0

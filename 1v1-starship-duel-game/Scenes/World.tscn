@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctbe5eml0n14e"]
+[gd_scene load_steps=13 format=3 uid="uid://ctbe5eml0n14e"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_1fl25"]
 [ext_resource type="PackedScene" uid="uid://ckhv54xnded0i" path="res://Scenes/ship_1.tscn" id="1_a3d66"]
@@ -15,6 +15,12 @@ size = Vector2(20, 648)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ve0i5"]
 size = Vector2(1152, 20)
+
+[sub_resource type="Environment" id="Environment_dsjtl"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 0
+glow_hdr_threshold = 0.02
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_1fl25")
@@ -92,3 +98,6 @@ texture_filter = 1
 position = Vector2(1152, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("9_6ugu5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dsjtl")

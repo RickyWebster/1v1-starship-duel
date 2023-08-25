@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl3glulk1s1t3"]
+
+[ext_resource type="Texture2D" uid="uid://dikgmey3ietuk" path="res://Assets/Asteroids/NO2L.png" id="1_iv1dk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ye1h"]
+radius = 44.0454
+
+[node name="asteroid_NO2L" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_iv1dk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(-14, 0.5, -12, -4, -6.75, -8, 5.5, -11, 13, -9, 13, -4, 9, -1.5, 12, 0.25, 10, 6.75, 6, 10, -1, 10, -4, 12, -11, 12, -13, 8, -11, 5.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1ye1h")

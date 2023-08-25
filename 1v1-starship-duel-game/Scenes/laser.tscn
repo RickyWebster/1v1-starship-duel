@@ -1,11 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bal77qf2pv3j3"]
+[gd_scene load_steps=10 format=3 uid="uid://bal77qf2pv3j3"]
 
 [ext_resource type="Script" path="res://Scripts/laser.gd" id="1_v1ucc"]
 [ext_resource type="Texture2D" uid="uid://c3vfw6w5fce6v" path="res://Assets/bullets/Laser_icon.png" id="2_y6msh"]
+[ext_resource type="Texture2D" uid="uid://do3er0xcj1dv5" path="res://Assets/bullets/glowing_circle.png" id="3_wpf3p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0kw4"]
 radius = 1.0
 height = 18.0
+
+[sub_resource type="Gradient" id="Gradient_jrugs"]
+offsets = PackedFloat32Array(0, 0.911111, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.588889, 0.588889, 0.588889, 0.588889, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4266p"]
+gradient = SubResource("Gradient_jrugs")
+
+[sub_resource type="Curve" id="Curve_prhb8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.403293, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fdujd"]
+curve = SubResource("Curve_prhb8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5vbmb"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 125.0
+initial_velocity_max = 125.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_fdujd")
+color_ramp = SubResource("GradientTexture1D_4266p")
 
 [node name="Laser" type="Area2D"]
 position = Vector2(0, -5)
@@ -24,6 +51,15 @@ shape = SubResource("CapsuleShape2D_y0kw4")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 4)
 scale = Vector2(0.1, 0.1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -12)
+rotation = -1.5708
+scale = Vector2(0.1, 0.1)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_5vbmb")
+texture = ExtResource("3_wpf3p")
+lifetime = 0.15
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
