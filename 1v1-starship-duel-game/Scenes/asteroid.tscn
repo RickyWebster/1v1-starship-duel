@@ -1,18 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://warplkt837cy"]
+[gd_scene load_steps=5 format=3 uid="uid://cij8aqqi8f8be"]
 
-[ext_resource type="Script" path="res://Scripts/asteroid.gd" id="1_c0m5n"]
-[ext_resource type="Texture2D" uid="uid://cmq0s3xw6fep3" path="res://Assets/Asteroids/NO1L.png" id="2_eq0r7"]
+[ext_resource type="Script" path="res://Scripts/asteroid.gd" id="1_isxlw"]
+[ext_resource type="Texture2D" uid="uid://cqs64j66mrqph" path="res://Assets/Asteroids/NO3L.png" id="2_cxcdi"]
+[ext_resource type="Shape2D" uid="uid://cre7d6kijue4e" path="res://Resources/no3l_capsule_shape_2d.tres" id="3_5sj2k"]
+[ext_resource type="Shape2D" uid="uid://dbsbn5dw58gxc" path="res://Resources/no3l_circle_shape_2d.tres" id="4_uonwf"]
 
-[node name="Asteroid" type="Area2D"]
-script = ExtResource("1_c0m5n")
-WhatAsteroid = 2
+[node name="space_rock" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_isxlw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_eq0r7")
+texture = ExtResource("2_cxcdi")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-17, 39)
 polygon = PackedVector2Array(-42, -29, -27, 13, -12, 21, -1, 12, 21, 21, 57, 5, 73, -19, 73, -67, 61, -87, 27, -99, 13, -83, -19, -79)
 one_way_collision_margin = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 15
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+position = Vector2(-20, 43)
+scale = Vector2(1.1, 1.1)
+polygon = PackedVector2Array(-42, -29, -27, 13, -12, 21, -1, 12, 21, 21, 57, 5, 73, -19, 73, -67, 61, -87, 27, -99, 13, -83, -19, -79)
+one_way_collision_margin = 0.0
+
+[node name="CShape1" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -2)
+rotation = 1.01404
+shape = ExtResource("3_5sj2k")
+
+[node name="CShape2" type="CollisionShape2D" parent="."]
+position = Vector2(34, 22)
+rotation = 1.33343
+shape = ExtResource("4_uonwf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -4,8 +4,11 @@ signal laser_shot1(laser)
 
 var angular_speed = 1.4 * PI
 var speed = 0.0
+var _direction := Vector2(-1, 0)
 var max_speed = 200.0
 var dirft_rotation = rotation
+var _collision:KinematicCollision2D
+var not_paralised = true
 
 @onready var muzzle = $Muzzle
 var laser_scene = preload("res://Scenes/laser.tscn")
@@ -15,7 +18,7 @@ var powered = false
 var count = 0
 
 
-func _process(_delta):	
+func _process(_delta):
 	if passer.what_power1 != 0 and Input.is_action_pressed("p1_power"):
 		if !powered:
 			powered = true
@@ -60,23 +63,38 @@ func _physics_process(delta):
 		direction = 1
 	rotation += angular_speed * direction * delta
 	
-	velocity = Vector2.ZERO
-	if Input.is_action_pressed("p1_accelorate"):
-		if speed < max_speed:
-			speed += 10
-		velocity = Vector2.LEFT.rotated(rotation) * speed
-		dirft_rotation = rotation
-	else:
-		if speed > 0:
-			speed -= 3.0
-		velocity = Vector2.LEFT.rotated(dirft_rotation) * speed
-		
-	move_and_slide()
+	if not_paralised:
+		if Input.is_action_pressed("p1_accelorate"):
+			if speed < max_speed:
+				speed += 10
+			dirft_rotation = rotation
+		else:
+			if speed > 0:
+				speed -= 3.0
+			
+	_direction = _direction.normalized()
+	velocity = speed * _direction.rotated(rotation) * delta
+	_collision = move_and_collide(velocity)
+	if _collision:
+		if _collision.get_collider().name in ["space_rock", "space_rock2", "space_rock3"]:
+			if _direction == Vector2(-1, 0):
+				_direction = _direction.bounce(_collision.get_normal())
+			else:
+				_direction = Vector2(1, 0)
+			not_paralised = false
+			speed = max_speed
+			for i in range (10):
+				if speed > 0:
+					speed -= 4.4444 * i
+				await get_tree().create_timer(0.1).timeout
+			not_paralised = true
+			speed = 0
+			_direction = Vector2(-1, 0)
 
 
 func shoot_laser(offset):
 	var las = laser_scene.instantiate()
-	las.global_position = muzzle.global_position 
+	las.global_position = muzzle.global_position
 	las.rotation = rotation + -PI/2 + deg_to_rad(offset)
 	emit_signal("laser_shot1", las)
 	
@@ -101,3 +119,7 @@ func reset():
 	passer.what_power1 = 0
 	passer.colour1 = 0
 	count = 0
+
+func _on_space_rock_hit(body):
+	if body == 'Ship1':
+		passer.p1_health -= 25

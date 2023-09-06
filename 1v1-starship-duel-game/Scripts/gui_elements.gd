@@ -45,4 +45,3 @@ func _on_timer_timeout():
 func power(no):
 	var what_power = randi_range(1, 3)
 	passer["what_power" + str(no)] = what_power
-	print(what_power)
