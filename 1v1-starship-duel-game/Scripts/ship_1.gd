@@ -53,6 +53,10 @@ func _process(_delta):
 			
 	if passer.death == true:
 		death()
+		
+	if passer.hit == true and  passer.hit_name == ("Ship1"):
+		passer.p1_health -= 25
+		passer.hit = false
 
 
 func _physics_process(delta):
@@ -76,7 +80,7 @@ func _physics_process(delta):
 	velocity = speed * _direction.rotated(rotation) * delta
 	_collision = move_and_collide(velocity)
 	if _collision:
-		if _collision.get_collider().name in ["space_rock", "space_rock2", "space_rock3"]:
+		if "space_rock" in str(_collision.get_collider().name):
 			if _direction == Vector2(-1, 0):
 				_direction = _direction.bounce(_collision.get_normal())
 			else:
@@ -86,6 +90,8 @@ func _physics_process(delta):
 			for i in range (10):
 				if speed > 0:
 					speed -= 4.4444 * i
+				else: 
+					break
 				await get_tree().create_timer(0.1).timeout
 			not_paralised = true
 			speed = 0
@@ -119,7 +125,3 @@ func reset():
 	passer.what_power1 = 0
 	passer.colour1 = 0
 	count = 0
-
-func _on_space_rock_hit(body):
-	if body == 'Ship1':
-		passer.p1_health -= 25

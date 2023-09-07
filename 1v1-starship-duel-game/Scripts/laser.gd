@@ -21,6 +21,5 @@ func _on_body_entered(body):
 	if body.name == ("Ship2"):
 		queue_free()
 		passer.p2_health -= 4
-		
-
-
+	if "space_rock" in str(body.name):
+		queue_free()

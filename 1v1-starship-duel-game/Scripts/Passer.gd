@@ -7,6 +7,8 @@ var what_power1 = 0
 var what_power2 = 0
 var colour1 = 0
 var colour2 = 0
+var hit = false
+var hit_name
 
 func _process(_delta):
 	if p1_health <= 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctbe5eml0n14e"]
+[gd_scene load_steps=13 format=3 uid="uid://ctbe5eml0n14e"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_1fl25"]
 [ext_resource type="PackedScene" uid="uid://ckhv54xnded0i" path="res://Scenes/ship_1.tscn" id="1_a3d66"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bfpil6dieilno" path="res://Assets/SpaceBackground/Space Background(4) Dark.png" id="7_iegay"]
 [ext_resource type="Texture2D" uid="uid://c53nfsp7uagee" path="res://Assets/SpaceBackground/Space Background (3),(2nd).png" id="8_7int8"]
 [ext_resource type="Texture2D" uid="uid://bnv74as3ugwa1" path="res://Assets/SpaceBackground/Space Background (2),(2nd).png" id="9_6ugu5"]
-[ext_resource type="PackedScene" uid="uid://cij8aqqi8f8be" path="res://Scenes/asteroid.tscn" id="11_2pcyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgict"]
 size = Vector2(20, 648)
@@ -41,9 +40,6 @@ scale = Vector2(1, 1)
 [node name="Lasers" type="Node2D" parent="."]
 
 [node name="Rocks" type="Node2D" parent="."]
-
-[node name="space_rock" parent="Rocks" instance=ExtResource("11_2pcyx")]
-position = Vector2(500, 200)
 
 [node name="GUI_Elements" parent="." instance=ExtResource("4_dxsa2")]
 
@@ -108,5 +104,3 @@ texture = ExtResource("9_6ugu5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dsjtl")
-
-[connection signal="hit" from="Rocks/space_rock" to="Ship1" method="_on_space_rock_hit"]

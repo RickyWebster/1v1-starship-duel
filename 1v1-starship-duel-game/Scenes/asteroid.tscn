@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cij8aqqi8f8be"]
+[gd_scene load_steps=7 format=3 uid="uid://cij8aqqi8f8be"]
 
 [ext_resource type="Script" path="res://Scripts/asteroid.gd" id="1_isxlw"]
-[ext_resource type="Texture2D" uid="uid://cqs64j66mrqph" path="res://Assets/Asteroids/NO3L.png" id="2_cxcdi"]
-[ext_resource type="Shape2D" uid="uid://cre7d6kijue4e" path="res://Resources/no3l_capsule_shape_2d.tres" id="3_5sj2k"]
-[ext_resource type="Shape2D" uid="uid://dbsbn5dw58gxc" path="res://Resources/no3l_circle_shape_2d.tres" id="4_uonwf"]
+[ext_resource type="Texture2D" uid="uid://cmq0s3xw6fep3" path="res://Assets/Asteroids/NO1L.png" id="2_575x8"]
+[ext_resource type="Shape2D" uid="uid://3kktih651ebh" path="res://Resources/no1l_capsule_shape_2d.tres" id="3_pbgrg"]
+[ext_resource type="Shape2D" uid="uid://cssydahj2tx0b" path="res://Resources/no1l_circle_shape_2d.tres" id="4_egdbm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0x8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7pfyd"]
 
 [node name="space_rock" type="RigidBody2D"]
 collision_layer = 8
@@ -13,32 +17,27 @@ script = ExtResource("1_isxlw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_cxcdi")
+texture = ExtResource("2_575x8")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2(-17, 39)
-polygon = PackedVector2Array(-42, -29, -27, 13, -12, 21, -1, 12, 21, 21, 57, 5, 73, -19, 73, -67, 61, -87, 27, -99, 13, -83, -19, -79)
-one_way_collision_margin = 0.0
+[node name="CShape1" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+rotation = 0.760964
+shape = ExtResource("3_pbgrg")
+
+[node name="CShape2" type="CollisionShape2D" parent="."]
+position = Vector2(-2.38419e-07, 3)
+rotation = -2.28813
+shape = ExtResource("4_egdbm")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 15
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
-visible = false
-position = Vector2(-20, 43)
+[node name="CShape3" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(1.1, 1.1)
-polygon = PackedVector2Array(-42, -29, -27, 13, -12, 21, -1, 12, 21, 21, 57, 5, 73, -19, 73, -67, 61, -87, 27, -99, 13, -83, -19, -79)
-one_way_collision_margin = 0.0
+shape = SubResource("CircleShape2D_d0x8o")
 
-[node name="CShape1" type="CollisionShape2D" parent="."]
-position = Vector2(-6, -2)
-rotation = 1.01404
-shape = ExtResource("3_5sj2k")
-
-[node name="CShape2" type="CollisionShape2D" parent="."]
-position = Vector2(34, 22)
-rotation = 1.33343
-shape = ExtResource("4_uonwf")
+[node name="CShape4" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_7pfyd")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
