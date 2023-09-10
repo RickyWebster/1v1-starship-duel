@@ -3,8 +3,16 @@ extends Node2D
 @onready var time = $Timer
 @onready var Powerup1 = $Powerup1
 @onready var Powerup2 = $Powerup2
+@onready var indicator1 = $AbilityIndicators1
+@onready var indicator2 = $AbilityIndicators2
 
 var length = 0.06 # Length of cooldown * 10^-2
+var linking_indicator = [3, 1, 0, 4, null, null]
+
+
+func _ready():
+	indicator1.frame = 3
+	indicator2.frame = 3
 
 
 func _process(_delta):
@@ -23,6 +31,12 @@ func _process(_delta):
 	else:
 		Powerup2.set_modulate(Color8(194,149,0))
 	
+	if passer.death == true:
+		Powerup1.value = 0
+		Powerup2.value = 0
+		indicator1.frame = 3
+		indicator2.frame = 3
+	
 
 func _on_timer_timeout():
 	if Powerup1.value <= 99:
@@ -32,6 +46,7 @@ func _on_timer_timeout():
 	else:
 		if passer.what_power1 == 0:
 			Powerup1.value = 0
+			indicator1.frame = 3
 
 	if Powerup2.value <= 99:
 		Powerup2.value += 1
@@ -40,8 +55,13 @@ func _on_timer_timeout():
 	else:
 		if passer.what_power2 == 0:
 			Powerup2.value = 0
+			indicator2.frame = 3
 
 
 func power(no):
 	var what_power = randi_range(1, 3)
+	if no == 1:
+		indicator1.frame = linking_indicator[what_power]
+	else:
+		indicator2.frame = linking_indicator[what_power]
 	passer["what_power" + str(no)] = what_power

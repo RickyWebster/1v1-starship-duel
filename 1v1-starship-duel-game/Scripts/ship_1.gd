@@ -53,10 +53,6 @@ func _process(_delta):
 			
 	if passer.death == true:
 		death()
-		
-	if passer.hit == true and  passer.hit_name == ("Ship1"):
-		passer.p1_health -= 25
-		passer.hit = false
 
 
 func _physics_process(delta):

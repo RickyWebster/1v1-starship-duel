@@ -53,10 +53,6 @@ func _process(_delta):
 			
 	if passer.death == true:
 		death()
-		
-	if passer.hit == true and  passer.hit_name == ("Ship2"):
-		passer.p2_health -= 25
-		passer.hit = false
 
 
 func _physics_process(delta):
@@ -107,8 +103,8 @@ func shoot_laser(offset):
 	
 func death():
 	passer.p2_health = 100
-	self.global_position = Vector2(192,324)
-	rotation = deg_to_rad(160)
+	self.global_position = Vector2(960,324)
+	rotation = deg_to_rad(15)
 	speed = 0
 	
 	

@@ -136,5 +136,7 @@ func positions(side):
 
 
 func _on_area_2d_body_entered(body):
-	passer.hit = true
-	passer.hit_name = body.name
+	if body.name == "Ship1":
+		passer.p1_health -= 20
+	if body.name == "Ship2":
+		passer.p2_health -= 20

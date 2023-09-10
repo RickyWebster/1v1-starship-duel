@@ -19,14 +19,21 @@ func _ready():
 		rocks.add_child(rok)
 
 func _on_player_laser_shot1(laser):
+	var laserParticle = laser.get_node("GPUParticles2D")
 	if passer.colour1 == 1:
 		var laserSprite = laser.get_node("Sprite2D")
 		laserSprite.texture = laserTextureRed
-		#var laserParticle = laser.get_node("GPUParticles2D")
+		laserParticle.set_modulate(Color8(225,175,170))
+	else:
+		laserParticle.set_modulate(Color8(158,195,218))
 	lasers.add_child(laser)
 
 func _on_player_laser_shot2(laser):
+	var laserParticle = laser.get_node("GPUParticles2D")
 	if passer.colour2 == 1:
 		var laserSprite = laser.get_node("Sprite2D")
 		laserSprite.texture = laserTextureRed
+		laserParticle.set_modulate(Color8(225,175,170))
+	else:
+		laserParticle.set_modulate(Color8(158,195,218))
 	lasers.add_child(laser)
