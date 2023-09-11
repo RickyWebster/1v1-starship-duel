@@ -48,8 +48,8 @@ autostart = true
 [node name="AbilityIndicators1" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.929412)
 texture_filter = 1
-position = Vector2(32, 579)
-scale = Vector2(4.39609, 4.39609)
+position = Vector2(42.51, 570)
+scale = Vector2(6, 6)
 texture = ExtResource("2_0cn1k")
 hframes = 3
 vframes = 3
@@ -57,8 +57,8 @@ vframes = 3
 [node name="AbilityIndicators2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.929412)
 texture_filter = 1
-position = Vector2(1120, 579)
-scale = Vector2(4.39609, 4.39609)
+position = Vector2(1120, 570)
+scale = Vector2(6, 6)
 texture = ExtResource("2_0cn1k")
 hframes = 3
 vframes = 3

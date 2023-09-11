@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal laser_shot1(laser)
 
-var angular_speed = 1.4 * PI
+var angular_speed = 2 * PI
 var speed = 0.0
 var _direction := Vector2(-1, 0)
 var max_speed = 200.0
