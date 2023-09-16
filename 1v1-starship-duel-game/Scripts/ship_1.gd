@@ -59,7 +59,6 @@ func _process(_delta):
 	if passer.death == true:
 		death()
 		
-		
 	if last_health != passer.p1_health:
 		last_health = passer.p1_health
 		sprite.texture = hit_texture
@@ -117,17 +116,19 @@ func shoot_laser(offset):
 	
 func death():
 	if passer.p1_health <= 0:
+		passer.p1_health = 99
 		emit_signal("show_death", global_position)
-		passer.p1_health = 100
 		self.hide()
 		dead = true
+	passer.p1_health = 99
 	await get_tree().create_timer(2).timeout
 	dead = false
+	speed = 0
+	reset()
+	passer.p1_health = 100
 	self.show()
 	self.global_position = Vector2(192,324)
-	passer.p1_health = 100
 	rotation = deg_to_rad(160)
-	speed = 0
 	
 	
 func power_up():
@@ -143,4 +144,5 @@ func reset():
 	passer.what_power1 = 0
 	passer.colour1 = 0
 	count = 0
+	fire_rate = 0.2
 

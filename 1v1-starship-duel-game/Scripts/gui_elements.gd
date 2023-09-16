@@ -36,6 +36,8 @@ func _process(_delta):
 		Powerup2.value = 0
 		indicator1.hide()
 		indicator2.hide()
+		passer.what_power1 = 0
+		passer.what_power2 = 0
 	
 
 func _on_timer_timeout():
