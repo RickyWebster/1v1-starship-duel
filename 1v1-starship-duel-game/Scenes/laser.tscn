@@ -12,14 +12,14 @@ height = 18.0
 offsets = PackedFloat32Array(0, 0.911111, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.588889, 0.588889, 0.588889, 0.588889, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4266p"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rqnfc"]
 gradient = SubResource("Gradient_jrugs")
 
 [sub_resource type="Curve" id="Curve_prhb8"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.403293, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_fdujd"]
+[sub_resource type="CurveTexture" id="CurveTexture_i3tbl"]
 curve = SubResource("Curve_prhb8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5vbmb"]
@@ -31,8 +31,8 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 0.1
 scale_max = 0.1
-scale_curve = SubResource("CurveTexture_fdujd")
-color_ramp = SubResource("GradientTexture1D_4266p")
+scale_curve = SubResource("CurveTexture_i3tbl")
+color_ramp = SubResource("GradientTexture1D_rqnfc")
 
 [node name="Laser" type="Area2D"]
 position = Vector2(0, -5)
@@ -62,6 +62,8 @@ amount = 16
 process_material = SubResource("ParticleProcessMaterial_5vbmb")
 texture = ExtResource("3_wpf3p")
 lifetime = 0.15
+
+[node name="Particles" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

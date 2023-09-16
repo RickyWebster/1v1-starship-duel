@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal laser_shot1(laser)
+signal show_death(pos)
 
 var angular_speed = 2 * PI
 var speed = 0.0
@@ -9,13 +10,17 @@ var max_speed = 200.0
 var dirft_rotation = rotation
 var _collision:KinematicCollision2D
 var not_paralised = true
-
+@onready var sprite = $Sprite2D
 @onready var muzzle = $Muzzle
 var laser_scene = preload("res://Scenes/laser.tscn")
+var hit_texture = preload("res://Assets/Ships/Ship2_Hit.png")
+var norm_texture = preload("res://Assets/Ships/Ship2.png")
 var shoot_cd = false
 var fire_rate = 0.2
 var powered = false
 var count = 0
+var last_health = passer.p1_health
+var dead = false
 
 
 func _process(_delta):
@@ -53,6 +58,14 @@ func _process(_delta):
 			
 	if passer.death == true:
 		death()
+		
+		
+	if last_health != passer.p1_health:
+		last_health = passer.p1_health
+		sprite.texture = hit_texture
+		await get_tree().create_timer(0.13).timeout
+		sprite.texture = norm_texture
+	last_health = passer.p1_health
 
 
 func _physics_process(delta):
@@ -95,15 +108,24 @@ func _physics_process(delta):
 
 
 func shoot_laser(offset):
-	var las = laser_scene.instantiate()
-	las.global_position = muzzle.global_position
-	las.rotation = rotation + -PI/2 + deg_to_rad(offset)
-	emit_signal("laser_shot1", las)
+	if dead != true:
+		var las = laser_scene.instantiate()
+		las.global_position = muzzle.global_position
+		las.rotation = rotation + -PI/2 + deg_to_rad(offset)
+		emit_signal("laser_shot1", las)
 	
 	
 func death():
-	passer.p1_health = 100
+	if passer.p1_health <= 0:
+		emit_signal("show_death", global_position)
+		passer.p1_health = 100
+		self.hide()
+		dead = true
+	await get_tree().create_timer(2).timeout
+	dead = false
+	self.show()
 	self.global_position = Vector2(192,324)
+	passer.p1_health = 100
 	rotation = deg_to_rad(160)
 	speed = 0
 	
@@ -121,3 +143,4 @@ func reset():
 	passer.what_power1 = 0
 	passer.colour1 = 0
 	count = 0
+

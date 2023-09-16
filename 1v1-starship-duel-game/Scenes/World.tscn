@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctbe5eml0n14e"]
+[gd_scene load_steps=14 format=3 uid="uid://ctbe5eml0n14e"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_1fl25"]
 [ext_resource type="PackedScene" uid="uid://ckhv54xnded0i" path="res://Scenes/ship_1.tscn" id="1_a3d66"]
 [ext_resource type="PackedScene" uid="uid://y5yiufuevy2f" path="res://Scenes/ship_2.tscn" id="2_nlmyk"]
+[ext_resource type="PackedScene" uid="uid://c4xmaq76tegls" path="res://Effects/ship_death.tscn" id="2_tbjk6"]
 [ext_resource type="PackedScene" uid="uid://pq17l0tiwia6" path="res://Scenes/gui_elements.tscn" id="4_dxsa2"]
 [ext_resource type="Script" path="res://Scripts/SpaceBackground.gd" id="5_k03bg"]
 [ext_resource type="Texture2D" uid="uid://c8hqh36ajp7od" path="res://Assets/SpaceBackground/Space Background layer(1).png" id="6_ehpr5"]
@@ -23,7 +24,9 @@ glow_blend_mode = 0
 glow_hdr_threshold = 0.02
 
 [node name="World" type="Node2D"]
+self_modulate = Color(1, 0.227451, 0.0901961, 1)
 script = ExtResource("1_1fl25")
+death_effect = ExtResource("2_tbjk6")
 
 [node name="Ship1" parent="." instance=ExtResource("1_a3d66")]
 texture_filter = 1
@@ -104,3 +107,6 @@ texture = ExtResource("9_6ugu5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dsjtl")
+
+[connection signal="show_death" from="Ship1" to="." method="_on_ship_1_show_death"]
+[connection signal="show_death" from="Ship2" to="." method="_on_ship_2_show_death"]

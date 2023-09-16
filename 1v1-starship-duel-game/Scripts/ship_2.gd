@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal laser_shot2(laser)
+signal show_death(pos)
 
 var angular_speed = 2 * PI
 var speed = 0.0
@@ -16,7 +17,7 @@ var shoot_cd = false
 var fire_rate = 0.2
 var powered = false
 var count = 0
-
+var dead = false
 
 func _process(_delta):
 	if passer.what_power2 != 0 and Input.is_action_pressed("p2_power"):
@@ -95,16 +96,25 @@ func _physics_process(delta):
 
 
 func shoot_laser(offset):
-	var las = laser_scene.instantiate()
-	las.global_position = muzzle.global_position
-	las.rotation = rotation + -PI/2 + deg_to_rad(offset)
-	emit_signal("laser_shot2", las)
+	if dead != true:
+		var las = laser_scene.instantiate()
+		las.global_position = muzzle.global_position
+		las.rotation = rotation + -PI/2 + deg_to_rad(offset)
+		emit_signal("laser_shot2", las)
 	
 	
 func death():
-	passer.p2_health = 100
+	if passer.p2_health <= 0:
+		emit_signal("show_death", global_position)
+		passer.p2_health = 100
+		self.hide()
+		dead = true
+	await get_tree().create_timer(2).timeout
+	dead = false
+	self.show()
 	self.global_position = Vector2(960,324)
-	rotation = deg_to_rad(15)
+	passer.p2_health = 100
+	rotation = deg_to_rad(20)
 	speed = 0
 	
 	
