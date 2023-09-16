@@ -2,7 +2,7 @@ extends Area2D
 
 @export var speed := 600
 var movement_vector := Vector2(0, -1)
-var particle_scene = preload("res://Effects/death_particle.tscn")
+var particle_scene = preload("res://Effects/Asteroid_particle.tscn")
 
 
 func _physics_process(delta):

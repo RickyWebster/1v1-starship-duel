@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dftnhx086yfhn"]
+
+[ext_resource type="Texture2D" uid="uid://do3er0xcj1dv5" path="res://Assets/bullets/glowing_circle.png" id="1_57llu"]
+
+[sub_resource type="Gradient" id="Gradient_m2e3d"]
+offsets = PackedFloat32Array(0, 0.911111, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.588889, 0.588889, 0.588889, 0.588889, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2b6vu"]
+gradient = SubResource("Gradient_m2e3d")
+
+[sub_resource type="Curve" id="Curve_2h0c3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.403293, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0mftt"]
+curve = SubResource("Curve_2h0c3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_17src"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_0mftt")
+color_ramp = SubResource("GradientTexture1D_2b6vu")
+
+[node name="Death_particle" type="GPUParticles2D"]
+position = Vector2(3.63798e-12, -9.53674e-07)
+rotation = -1.5708
+scale = Vector2(0.1, 0.1)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_17src")
+texture = ExtResource("1_57llu")
+lifetime = 8.0
+one_shot = true
