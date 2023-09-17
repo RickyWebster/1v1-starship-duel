@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cew8kfnq88grv"]
+[gd_scene load_steps=11 format=3 uid="uid://cew8kfnq88grv"]
 
 [ext_resource type="FontVariation" uid="uid://boig078mia03n" path="res://Resources/Pixel_font_variation.tres" id="1_vg3qy"]
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_vtg1x"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2v2n8ahxf136" path="res://Assets/Ships/Ship1.png" id="4_lpnui"]
 [ext_resource type="Texture2D" uid="uid://8f2eur3yw52j" path="res://Assets/Ships/Ship2.png" id="5_5mcec"]
 [ext_resource type="Script" path="res://Scripts/SpaceBackground.gd" id="7_fq71d"]
+[ext_resource type="Theme" uid="uid://3k5x2wqse1wu" path="res://Resources/Sound_theme.tres" id="10_xhkxl"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -80,6 +81,7 @@ theme = ExtResource("2_2qoj4")
 
 [node name="AutoButton" type="Button" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 632.4
 offset_top = 446.0
 offset_right = 1006.8
@@ -155,8 +157,18 @@ position = Vector2(1152, 324)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("3_n5l82")
 
+[node name="SoundButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 64.0
+offset_right = 92.0
+offset_bottom = 85.0
+scale = Vector2(4, 4)
+theme = ExtResource("10_xhkxl")
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="AutoButton" to="." method="_on_auto_button_pressed"]
+[connection signal="toggled" from="SoundButton" to="." method="_on_sound_button_toggled"]

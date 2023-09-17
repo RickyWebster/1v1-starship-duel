@@ -10,6 +10,7 @@ var colour2 = 0
 var player_hit = [false, 'what_ship']
 var score = [0, 0]
 var auto_play = false
+var mute_sounds = false
 
 func _process(_delta):
 	var death_count = death

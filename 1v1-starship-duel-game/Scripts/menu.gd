@@ -3,6 +3,7 @@ extends Control
 
 func _ready():
 	$CheckButton.button_pressed = passer.auto_play
+	$SoundButton.button_pressed = passer.mute_sounds
 	$Score_display/Score1.text = str(passer.score[0])
 	$Score_display/Score2.text = str(passer.score[1])
 
@@ -33,3 +34,7 @@ func _on_auto_button_pressed():
 	else:
 		curren_auto = true
 	_on_check_button_toggled(curren_auto)
+
+
+func _on_sound_button_toggled(button_pressed):
+	passer.mute_sounds = button_pressed

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://pq17l0tiwia6"]
 
 [ext_resource type="Script" path="res://Scripts/gui_elements.gd" id="1_wdljd"]
-[ext_resource type="Texture2D" uid="uid://dak70cvnal1yo" path="res://Assets/Ability_indicators.png" id="2_0cn1k"]
+[ext_resource type="Texture2D" uid="uid://dak70cvnal1yo" path="res://Assets/GUI:Other/Ability_indicators.png" id="2_0cn1k"]
 
 [node name="GUI_Elements" type="Node2D"]
 script = ExtResource("1_wdljd")

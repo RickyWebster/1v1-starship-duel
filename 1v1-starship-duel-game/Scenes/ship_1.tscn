@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckhv54xnded0i"]
+[gd_scene load_steps=6 format=3 uid="uid://ckhv54xnded0i"]
 
 [ext_resource type="Script" path="res://Scripts/ship_1.gd" id="1_jijog"]
 [ext_resource type="Texture2D" uid="uid://8f2eur3yw52j" path="res://Assets/Ships/Ship2.png" id="2_4ymh8"]
+[ext_resource type="AudioStream" uid="uid://djf820bpdm7g8" path="res://Assets/Audio/Shoot.wav" id="3_0ttie"]
+[ext_resource type="AudioStream" uid="uid://doob3481x3u0p" path="res://Assets/Audio/Hurt.wav" id="4_aktm5"]
+[ext_resource type="AudioStream" uid="uid://13o5582we386" path="res://Assets/Audio/Explode.wav" id="5_hw048"]
 
 [node name="Ship1" type="CharacterBody2D"]
 rotation = 1.5708
@@ -24,3 +27,14 @@ visible = false
 position = Vector2(0, 5)
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(-5, -3, 0, -6, 3, -6, 4, -5, 4, -4, 2, -3, 2, -2, 4, -1, 4, 0, 3, 1, 0, 1, -5, -2)
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0ttie")
+volume_db = -6.127
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_aktm5")
+
+[node name="ExplodeAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hw048")
+volume_db = -12.675

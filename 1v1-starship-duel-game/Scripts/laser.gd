@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed := 600
+@onready var asteroid_hit_audio = $AsteroidHitAudio
 var movement_vector := Vector2(0, -1)
 var particle_scene = preload("res://Effects/Asteroid_particle.tscn")
 
@@ -26,6 +27,8 @@ func _on_body_entered(body):
 		queue_free()
 		passer.p2_health -= 4
 	if "space_rock" in str(body.name):
+		if passer.mute_sounds:
+			asteroid_hit_audio.play()
 		for i in range(20):
 			var particle = particle_scene.instantiate()
 			particle.rotation = rotation + deg_to_rad(i * 18)

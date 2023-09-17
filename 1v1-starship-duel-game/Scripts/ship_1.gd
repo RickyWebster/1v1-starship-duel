@@ -12,6 +12,9 @@ var _collision:KinematicCollision2D
 var not_paralised = true
 @onready var sprite = $Sprite2D
 @onready var muzzle = $Muzzle
+@onready var shoot_audio = $ShootAudio
+@onready var hurt_audio = $HurtAudio
+@onready var explode_audio = $ExplodeAudio
 var laser_scene = preload("res://Scenes/laser.tscn")
 var hit_texture = preload("res://Assets/Ships/Ship2_Hit.png")
 var norm_texture = preload("res://Assets/Ships/Ship2.png")
@@ -62,6 +65,8 @@ func _process(_delta):
 	if last_health != passer.p1_health:
 		last_health = passer.p1_health
 		sprite.texture = hit_texture
+		if passer.mute_sounds:
+			hurt_audio.play()
 		await get_tree().create_timer(0.13).timeout
 		sprite.texture = norm_texture
 	last_health = passer.p1_health
@@ -108,6 +113,8 @@ func _physics_process(delta):
 
 func shoot_laser(offset):
 	if dead != true:
+		if passer.mute_sounds:
+			shoot_audio.play()
 		var las = laser_scene.instantiate()
 		las.global_position = muzzle.global_position
 		las.rotation = rotation + -PI/2 + deg_to_rad(offset)
@@ -118,6 +125,8 @@ func death():
 	if passer.p1_health <= 0:
 		passer.p1_health = 99
 		emit_signal("show_death", global_position)
+		if passer.mute_sounds:
+			explode_audio.play()
 		self.hide()
 		dead = true
 	passer.p1_health = 99
