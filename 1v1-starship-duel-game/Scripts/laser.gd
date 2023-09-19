@@ -4,6 +4,7 @@ extends Area2D
 @onready var asteroid_hit_audio = $AsteroidHitAudio
 var movement_vector := Vector2(0, -1)
 var particle_scene = preload("res://Effects/Asteroid_particle.tscn")
+var laserTextureArrow: Texture = load("res://Assets/bullets/Laser_arrow.png")
 
 
 func _physics_process(delta):
@@ -19,13 +20,16 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_body_entered(body):
 	if body.name == ("Ship1"):
 		passer.player_hit = [true, "Ship1"]
-		queue_free()
 		passer.p1_health -= 4
+		if $Sprite2D.texture == laserTextureArrow:
+			passer.p1_health -= 46
+		queue_free()
 	if body.name == ("Ship2"):
 		passer.player_hit = [true, "Ship2"]
-		emit_signal("player_hit", "Ship2")
-		queue_free()
 		passer.p2_health -= 4
+		if $Sprite2D.texture == laserTextureArrow:
+			passer.p2_health -= 46
+		queue_free()
 	if "space_rock" in str(body.name):
 		if passer.mute_sounds:
 			asteroid_hit_audio.play()

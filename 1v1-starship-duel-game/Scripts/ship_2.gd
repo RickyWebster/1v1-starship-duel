@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal laser_shot2(laser)
+signal laser_shot2(laser, damaged)
 signal show_death(pos)
 
 var angular_speed = 2 * PI
@@ -41,21 +41,24 @@ func _process(_delta):
 			shoot_cd = true
 			if powered == true and passer.what_power2 != 1:
 				if passer.what_power2 == 2:
-					shoot_laser(10)
-					shoot_laser(0)
-					shoot_laser(-10)
+					shoot_laser(10, 4)
+					shoot_laser(0, 4)
+					shoot_laser(-10, 4)
 					count += 1
 					if count >= 8:
 						reset()
 				elif passer.what_power2 == 3:
 					for i in range(8):
 						if i != 4:
-							shoot_laser(i * 45)
+							shoot_laser(i * 45, 4)
 					count += 1
 					if count >= 4:
 						reset()
+				elif passer.what_power2 == 4:
+					shoot_laser(0, 50)
+					reset()
 			else:
-				shoot_laser(0)
+				shoot_laser(0, 4)
 			await get_tree().create_timer(fire_rate).timeout
 			shoot_cd = false
 			
@@ -111,14 +114,14 @@ func _physics_process(delta):
 			_direction = Vector2(-1, 0)
 
 
-func shoot_laser(offset):
+func shoot_laser(offset, damaged):
 	if dead != true:
 		if passer.mute_sounds:
 			shoot_audio.play()
 		var las = laser_scene.instantiate()
 		las.global_position = muzzle.global_position
 		las.rotation = rotation + -PI/2 + deg_to_rad(offset)
-		emit_signal("laser_shot2", las)
+		emit_signal("laser_shot2", las, damaged)
 	
 	
 func death():

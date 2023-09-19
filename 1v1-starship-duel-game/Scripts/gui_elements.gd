@@ -7,7 +7,7 @@ extends Node2D
 @onready var indicator2 = $AbilityIndicators2
 
 var length = 0.06 # Length of cooldown * 10^-2
-var linking_indicator = [3, 1, 0, 4, null, null]
+var linking_indicator = [3, 1, 0, 4, 5, 2]
 
 
 func _ready():
@@ -61,7 +61,7 @@ func _on_timer_timeout():
 
 
 func power(no):
-	var what_power = randi_range(1, 3)
+	var what_power = randi_range(1, 4)
 	if no == 1:
 		indicator1.show()
 		indicator1.frame = linking_indicator[what_power]

@@ -24,7 +24,6 @@ glow_blend_mode = 0
 glow_hdr_threshold = 0.02
 
 [node name="World" type="Node2D"]
-self_modulate = Color(1, 0.227451, 0.0901961, 1)
 script = ExtResource("1_1fl25")
 death_effect = ExtResource("2_tbjk6")
 

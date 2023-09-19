@@ -12,6 +12,7 @@ var score = [0, 0]
 var auto_play = false
 var mute_sounds = false
 
+
 func _process(_delta):
 	var death_count = death
 	if p1_health <= 0:

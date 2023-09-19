@@ -7,6 +7,7 @@ extends Node2D
 @export var death_effect: PackedScene
 
 var laserTextureRed: Texture = load("res://Assets/bullets/Laser_red.png")
+var laserTextureArrow: Texture = load("res://Assets/bullets/Laser_arrow.png")
 var laserTextureBlue: Texture = load("res://Assets/bullets/Laser_red.png")
 var rock_scene = preload("res://Scenes/asteroid.tscn")
 
@@ -19,9 +20,13 @@ func _ready():
 		var rok = rock_scene.instantiate()
 		rocks.add_child(rok)
 
-func _on_player_laser_shot1(laser):
+func _on_player_laser_shot1(laser, damaged):
 	var laserParticle = laser.get_node("GPUParticles2D")
-	if passer.colour1 == 1:
+	if damaged != 4:
+		var laserSprite = laser.get_node("Sprite2D")
+		laserSprite.texture = laserTextureArrow
+		laserParticle.set_modulate(Color8(225,0,0))
+	elif passer.colour1 == 1: 
 		var laserSprite = laser.get_node("Sprite2D")
 		laserSprite.texture = laserTextureRed
 		laserParticle.set_modulate(Color8(225,175,170))
@@ -29,9 +34,13 @@ func _on_player_laser_shot1(laser):
 		laserParticle.set_modulate(Color8(158,195,218))
 	lasers.add_child(laser)
 
-func _on_player_laser_shot2(laser):
+func _on_player_laser_shot2(laser, damaged):
 	var laserParticle = laser.get_node("GPUParticles2D")
-	if passer.colour2 == 1:
+	if damaged != 4:
+		var laserSprite = laser.get_node("Sprite2D")
+		laserSprite.texture = laserTextureArrow
+		laserParticle.set_modulate(Color8(225,0,0))
+	elif passer.colour2 == 1:
 		var laserSprite = laser.get_node("Sprite2D")
 		laserSprite.texture = laserTextureRed
 		laserParticle.set_modulate(Color8(225,175,170))
