@@ -22,13 +22,13 @@ func _on_body_entered(body):
 		passer.player_hit = [true, "Ship1"]
 		passer.p1_health -= 4
 		if $Sprite2D.texture == laserTextureArrow:
-			passer.p1_health -= 46
+			passer.p1_health -= 71
 		queue_free()
 	if body.name == ("Ship2"):
 		passer.player_hit = [true, "Ship2"]
 		passer.p2_health -= 4
 		if $Sprite2D.texture == laserTextureArrow:
-			passer.p2_health -= 46
+			passer.p2_health -= 71
 		queue_free()
 	if "space_rock" in str(body.name):
 		if passer.mute_sounds:
